@@ -1,0 +1,14 @@
+<div class="ng-autocomplete mx-auto mb-3">
+  <ng-autocomplete [data]="autocompleteData" [searchKeyword]="keyword" (selected)='onSelectEvent($event)'
+    (inputChanged)='onChangeSearch($event)' [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate"
+    placeHolder="Search for a city" (keypress)="restrictNonEnglishLetters($event)"
+    (inputCleared)="onAutocompleteCleared()">
+  </ng-autocomplete>
+  <h4 class="text-danger text-center" *ngIf="!isSearchValid">Only English letters are allowed for searching</h4>
+  <ng-template #itemTemplate let-item>
+    <a [innerHTML]="item.name"></a>
+  </ng-template>
+  <ng-template #notFoundTemplate let-notFound>
+    <div [innerHTML]="notFound"></div>
+  </ng-template>
+</div>
